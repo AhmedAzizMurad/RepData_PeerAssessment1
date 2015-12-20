@@ -8,7 +8,7 @@ output:
 
 ## Loading and preprocessing the data
 
-```{r
+```{r}
 
 library("dplyr")
 library("knitr")
@@ -21,14 +21,14 @@ setwd("C:/Users/Administrator/Desktop/RepData_PeerAssessment1")
 RawData <- read.csv('activity.csv')
 
 CompletData <- RawData[complete.cases(RawData), ]
-}
+
 
 ```
 
 
 ## What is mean total number of steps taken per day?
 
-```{r 
+```{r}
 
 GroupedPerDay <- group_by(CompletData, date)
 
@@ -44,13 +44,11 @@ print(MeanValue)
 
 print(MedianValue)
 
-}
-
 ```
 
 ## What is the average daily activity pattern?
 
-```{r
+```{r}
 
 AvgStepsPerInterval <- aggregate(steps ~ interval, CompletData, mean)
 
@@ -61,9 +59,6 @@ IntervalIndex <- which.max(AvgStepsPerInterval$steps)
 print (paste("The Interval With The Highest Average Steps is: ", AvgStepsPerInterval[IntervalIndex, ]$interval, 
              ". While The Number Of Steps For That Interval is: ", round(AvgStepsPerInterval[IntervalIndex, ]$steps, digits = 1)))
 
-
-}
-
 ```
 
 
@@ -71,7 +66,8 @@ print (paste("The Interval With The Highest Average Steps is: ", AvgStepsPerInte
 
 ## Imputing missing values
 
-```{r
+```{r}
+
 TotMissingValue <- RawData[!complete.cases(RawData), ]
 
 nrow(TotMissingValue)
@@ -98,7 +94,6 @@ print(round(mean(ImputeStepsPerDay$steps)))
 
 print(round(median(ImputeStepsPerDay$steps)))
 
-}
 
 ```
 ### The imputed values don't have impact on on the estimates of the total daily number of steps.
@@ -106,7 +101,7 @@ print(round(median(ImputeStepsPerDay$steps)))
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r
+```{r}
 week_day <- function(date_val) {
   wd <- weekdays(as.Date(date_val, '%Y-%m-%d'))
   if  (!(wd == 'Saturday' || wd == 'Sunday')) {
@@ -129,9 +124,7 @@ plt <- ggplot(ImputeStepsPerDay, aes(interval, steps)) +
   ggtitle("Steps No. Per Interval Per Day Type")
 print(plt)
 
-}
 
 ```
 
 ### Steps in weekends are more spread out over the time periods than their peers in weekdays.
-
