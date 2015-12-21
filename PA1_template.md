@@ -150,7 +150,7 @@ print(round(median(ImputeStepsPerDay$steps)))
 ```
 ## [1] 10766
 ```
-### The imputed values don't have impact on on the estimates of the total daily number of steps.
+#### The imputed values don't have impact on on the estimates of the total daily number of steps.
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -182,4 +182,4 @@ print(plt)
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
-### Steps in weekends are more spread out over the time periods than their peers in weekdays.
+#### Steps in weekends are more spread out over the time periods than their peers in weekdays.
